@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HereLaw 결과페이지</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1,width=device-width" />
+  <!-- <meta name="viewport" content="height=device-height, initial-scale=1"> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="../static/css/result.css" />
+  <style>
+    @import url("../static/css/result.css") screen and (min-width: 350px) and (max-width:1024px);
+  </style>
+</head>
+
+<body>
+
+  <div id="logo-container">
+    <div id="logo-text">
+      <img src="../static/images\자동차그림.png" width="120px;" alt="자동차 그림" class="car-logo">
+
+      <!-- <H2>당신의 사고에 대한</br>
+        <img src="../static/images\herelaw logo.png" width="150px;">의
+        결론입니다.
+      </H2> -->
+      <H2>당신의 사고에 대한</br>
+        <img src="../static/images\herelaw logo.png" width="150px;">의
+        결론입니다.
+      </H2>
+    </div>
+  </div>
+
+
+  <div id="result-container">
+    <div class="button-container">
+
+      <button class="button" id="rate" onclick="RatePopup()">
+        <h3>과실비율</h3>
+        <h4>나의 과실비율을 예측해보세요.</h4>
+      </button>
+
+      <button class="button" id="agreement" onclick="AgreementPopup()">
+        <h3>교통사고 신속처리 표준 협의서</h3>
+        <h4>원활한 협의를 위해 작성해보세요.</h4>
+      </button>
+
+
+
+      <button class="button" id="law" onclick="LawPopup()">
+        <h3>판례요약</h3>
+        <h4>나와 비슷한 판례를 알기쉽게 보여드려요.</h4>
+      </button>
+
+
+      <button class="button" id="lawer" onclick="LawerPopup()">
+        <h3>변호사에게 사연 제보하기</h3>
+        <h4>나의 사연을 제보해보아요.</h4>
+      </button>
+    </div>
+
+
+
+    <div class="overlay" id="ratio-overlay">
+      <div class="popup-container">
+        <div class='popup-header-rate'> 과실비율</div>
+        <div class="popup" id='rate_1'>
+          <div id="rate-popup">
+            <span class="close-button">&times;</span>
+            <div class='rate-popup-text'>
+              <p class="rate-popup-paragraph">
+                이번 사고에서 내 과실은 얼마일까요?<br>
+                HereLaw가 예측한 과실비율입니다. <br>
+              </p>
+              <!-- 과실비율 팝업 내용 -->
+              <div class="rate-box">
+                <p class="yellow-box">과실비율</p>
+                <p id="ratioValue" class="left-align">20 : 80</p>
+                <!-- <p id="ratioValue" class="left-align">{{ rate }}</p> -->
+              </div>
+              <p class="yellow-box">과실해설</p>
+              <div class="rate-box1">
+                <div id="rate-text">
+                  당신의 응답 내용을 바탕으로,
+                  가장 비슷한 내용은 <br>
+                  <div class='lawer-1'>"차대차, 직선 도로, 후행 직진, 선행자동차(정차중 문열림)"</div>입니다. <br>
+                  <br>따라서, 당신은 후행 차량으로서 <br>
+                  선행 차량이 정차 중에 문을 열어 사고를 낸 것으로 추정됩니다.<br><br>
+                  기본적으로 B차량의 과실은 크지만 <br>
+                  후행 차량도 전방에 주정차가 있을 경우 <br>
+                  전방주시를 하며 서행해야 하기에 <br>
+                  양 차량의 기본과실은 <br><br>
+                  <div class='lawer-1'>20:80으로 정해졌습니다.<br></div>
+                </div>
+
+                <!-- <p id="ratiocomValue" class="left-align">{{ rete_com }}</p> -->
+              </div>
+            </div>
+          </div>
+          <p class="p1">본 자료는 참고용이며, 보험사마다 결과가 달라질 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="overlay" id="agreement-overlay">
+      <div class="popup-container">
+        <div class='popup-header-agreement'> 교통사고 신속처리 표준 협의서</div>
+        <div class="popup" id='agreement_1'>
+          <div class="agreement-popup">
+
+            <span class="close-button">&times;</span>
+            <p class="agreement-popup-paragraph">
+              꼼꼼히 작성해주신 내용을 바탕으로<br>
+              HereLaw가 작성한 <br> 신속처리 표준 협의서입니다. <br>
+              참고하셔서 원활한 처리가 되시길 바랍니다.<br>
+            </p>
+            <div id="agreement-image" >
+              <div id="agreement-content">
+
+            </div>
+            <div id="agreement-text">
+              사고일시: 2023년 6월 14일 수요일<br>
+              사고장소: 경부고속도로<br>
+              사고당시 날씨: 흐리고 비옴<br>
+              파손부위: 사진 <br>
+              구체적 사고개요: 내용 포함<br>
+              사고약도: 지도 포함<br>
+            </div>
+            <!-- src="static/uploads/과실심의분쟁위원회.png"-->
+            <!-- 교통사고 신속처리 대응 협의서 팝업 사진 업로드 -->
+
+
+            </div>
+
+            <button id="download-button" class="button-style">협의서 다운로드</button>
+
+          </div>
+
+        </div>
+        <p class="p1">본 자료는 참고용입니다.</p>
+      </div>
+
+    </div>
+
+
+    <div class="overlay" id="law-overlay">
+      <div class="popup-container">
+        <div class='popup-header-law'> 판례요약</div>
+        <div class="popup" id='law_1'>
+          <div class='law-popup-text'>
+            <p class="law-popup-paragraph">
+              나의 상황과 비슷한 판례를 찾아서<br>
+              쉬운 단어로 짧게 요약해서 보여드립니다.<br>
+            </p>
+            <div id="law-popup-content">
+              <span class="close-button">&times;</span>
+              <div class='law-popup-text-2'>
+                운전자의 불법 정차와 사고 사이에<br>
+                상당인과관계가 있다면, <br>
+                자동차손해배상 보장법 제3조에 따라 <br>
+                운행으로 인하여 발생한 사고로
+                인정되어 배상 책임을 진다. <br><br>
+                이에 따라 원심판결이 오해로 인한 잘못이 있어
+                환송 결정이 내려졌다.</div>
+              <!-- <p id="summaryValue" class="left-align">{{ law }}</p> -->
+            </div>
+          </div>
+          <p class="p1">본 자료는 참고용입니다.</p>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <div class="overlay" id="lawer-overlay">
+      <div class="popup-container">
+        <div class='popup-header-lawer'> 변호사에게 사연 제보하기</div>
+        <div class="popup" id='lawer_1'>
+          <p class="lawer-popup-paragraph">
+            지금까지 작성해주신 내용을 바탕으로<br>
+            생성해본 사연을 보시겠어요?<br>
+            나의 사연을 변호사와 상담해보세요!<br>
+          </p>
+          <div class='lawer-popup-text'>
+
+            <div id="lawer-popup-content">
+              <span class="close-button">&times;</span>
+              <!-- 변호사에게 사연 제보하기 팝업 내용 -->
+              <div class='lawer-popup-text-2'>
+                <div class='lawer-1'>안녕하세요, 이가희 변호사님.</div><br>
+                저는 얼마 전에 차대차 사고를 당했습니다. 사고는 직선도로에서 발생했고, 저는 차를 직진하고 있었습니다. 그런데 갑자기 정차하고 있는 상대방 차에서 문이 열려 사고가
+                발생했습니다.<br><br>
+                이 사고로 인해 정말로 당황했고, 상당한 피해를 입었습니다. 사고 당시에는 저의 운전이나 주행에 어떠한 문제도 없었는데, 상대방의 부주의한 행동으로 인해 이런 사고가 발생하게
+                되었습니다.<br><br>
+                저는 사고 발생 후 경찰에게 신고를 했고, 보험사에 사고 보상을 요청했습니다. 하지만 이 사고로 인해 제 정서적으로나 경제적으로 많은 어려움을 겪고 있습니다. 특히, 상대방의 보험사가
+                책임을 회피하려는 모습을 보여 당황스럽습니다.<br><br>
+                이런 상황에서 도움을 요청드리고 싶습니다. 사고에 대한 법적인 조언이나 보험 청구 과정에 대한 도움을 받을 수 있는 방법이 있을까요? 또한, 이와 같은 사고를 미리 예방하고 대처할 수
+                있는 방법에 대해서도 조언을 구하고 싶습니다.<br><br>
+                많은 도움을 부탁드립니다.<br><br>
+                <div class='lawer-1'>감사합니다.<br></div>
+                <!-- <p id="lawerValue" class="left-align">{{ report }}</p> -->
+              </div>
+
+            </div>
+
+          </div>
+          <p class="p1">본 자료는 참고용입니다.</p>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+</body>
+<script src="../static/result.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var closeBtns = document.querySelectorAll('.close-btn');
+    var ratiooverlay = document.getElementById('ratio-overlay');
+    var agreementoverlay = document.getElementById('agreement-overlay');
+    var lawoverlay = document.getElementById('law-overlay');
+    var laweroverlay = document.getElementById('lawer-overlay');
+
+    var summaryValue = document.getElementById('summaryValue');
+    var ratioValue = document.getElementById('ratioValue');
+    var ratiocomValue = document.getElementById('ratiocomValue');
+    var lawerValue = document.getElementById('lawerValue');
+  });
+
+  // 가이드 버튼 클릭 시 레이어 팝업 열기
+  document.getElementById('rate').addEventListener('click', function () {
+  });
+  document.getElementById('agreement').addEventListener('click', function () {
+  });
+  document.getElementById('law').addEventListener('click', function () {
+  });
+  document.getElementById('lawer').addEventListener('click', function () {
+
+  });
+
+  // 서버에서 요약 law 값을 가져옴
+  fetch('/lawoverlay')
+    .then(response => response.json())
+    .then(data => {
+      // 가져온 law 값을 팝업 내용에 삽입
+      const law = data.law;
+      summaryValue.textContent = law;
+      console.log(law)
+    });
+
+
+
+  // 서버에서 과실비율 값을 가져옴
+  fetch('/ratiooverlay')
+    .then(response => response.json())
+    .then(data => {
+      // 가져온 rate, 과실비율 해석 값을 팝업 내용에 삽입
+      ratioValue.textContent = data.rate;
+      ratiocomValue.textContent = data.rate_com;
+    });
+
+  // 서버에서 변호사 값을 가져옴
+  fetch('/laweroverlay')
+    .then(response => response.json())
+    .then(data => {
+      // 가져온 report 값을 팝업 내용에 삽입
+      lawerValue.textContent = data.report;
+    });
+
+
+</script>
+
+</html>
